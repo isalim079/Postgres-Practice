@@ -63,3 +63,81 @@ SELECT min(age) from students
 SELECT sum(age) from students
 
 SELECT count(*) from students
+
+SELECT * from students
+
+SELECT max(length(first_name)) from students
+
+SELECT * from students
+    WHERE NOT country = 'USA'
+
+    SELECT * from students
+        WHERE email = 'tom.brown@example.com'
+
+SELECT * from students
+    WHERE email IS NULL
+
+SELECT * FROM students
+
+INSERT INTO students (first_name, last_name, age, grade, course, email, dob, blood_group, country) VALUES
+('Break', 'Smith', 20, 'A', 'Mathematics', NULL, '2003-05-12', 'O+', 'BD')
+
+SELECT email from students
+
+SELECT COALESCE(email, 'Email not provided') from students;
+
+DELETE from students
+WHERE student_id = 17
+
+UPDATE students
+SET student_id = 16
+WHERE student_id = 18
+
+
+SELECT * FROM students
+WHERE country = 'USA' OR country = 'UK'
+
+SELECT * FROM students WHERE country IN('USA', 'UK', 'Canada')  /* handle multiple OR */
+
+SELECT * FROM students WHERE country NOT IN('USA', 'UK', 'Canada')  /* Data will shown except these */
+
+SELECT * from students WHERE age BETWEEN 19 AND 22
+
+SELECT dob FROM students
+    WHERE dob BETWEEN '2000-01-01' AND '2005-01-01' ORDER BY dob    /* date of birth = dob */
+
+SELECT * from students
+    WHERE first_name LIKE '%am';    /* In the end of first name where am is available will be shown */
+
+SELECT * from students
+    WHERE first_name LIKE '__%a';    
+
+SELECT * from students
+    WHERE first_name LIKE '___a';    
+
+SELECT * from students
+    WHERE first_name LIKE '__a_';    
+
+SELECT * from students
+    WHERE first_name ILIKE 'A%';    /* ILIKE means case in sensitive. Only LIKE is case sensitive */
+
+SELECT * FROM students LIMIT 5 OFFSET 5     /* OFFSET means it will show data except 1st 5.*/
+
+SELECT * FROM students LIMIT 5 OFFSET 5 * 0     /* 1 to 5 data will show */
+
+SELECT * FROM students LIMIT 5 OFFSET 5 * 1     /* 6 to 10 will show */
+
+SELECT * FROM students LIMIT 5 OFFSET 5 * 2     /* By using limit and offset we can make pagination */
+
+SELECT * FROM students;
+
+DELETE FROM students
+    WHERE grade = 'C' AND country = 'Australia'
+
+UPDATE students
+    set email = 'default@mail.com'
+    WHERE student_id = 16
+
+UPDATE students
+    set email = 'default@mail.com', age = 30
+    WHERE student_id = 16
